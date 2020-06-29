@@ -1,0 +1,151 @@
+<html>    
+<head>
+<style>
+p
+{
+  color:orange;
+  font-size:200%;
+}
+input
+{
+  height:20px;
+  width:30%;
+
+}
+err
+{
+  visibility:hidden;
+  color:red;
+}
+err1
+{
+  visibility:hidden;
+  color:red;
+}
+
+#p
+{
+  height:30px;
+  width:10%;
+  margin-left:12%;
+  background-color:blue;
+  color:white;
+  text-decoration:none;
+}
+#s
+{
+  width:10%;
+  margin-left:10%;
+  height:30px;
+  background-color:red;
+  color:white;
+}
+#p123
+{
+  color:blue;
+}
+
+@media only screen and (min-width:800px)
+{
+  body
+  {
+    margin-left:40%;
+  }
+ 
+}
+</style>
+<script>
+function reg()
+{
+  var count=0;
+  var err1=document.getElementsByTagName("err1");
+  var inp=document.getElementsByTagName("input");
+  for(var i=0;i<6;i++)
+    {
+          err1[i].style.visibility="hidden";
+    }
+  for(var i=0;i<5;i++)
+    {
+      if(inp[i].value==="")
+        {
+          err1[i].style.visibility="visible";
+          err1[i].innerHTML="Field is empty";
+        }
+      else
+        {
+          count=count+1;
+        }
+    }
+  if(count==5 && inp[3].value==inp[4].value)
+    {
+      err1[5].style.visibility="visible";
+      err1[5].style.color="blue";
+      err1[5].innerHTML="Your are sucessfully Registerd";
+    }
+  if(count==5 && inp[3].value!=inp[4].value)
+    {
+       err1[5].style.visibility="visible";
+      err1[5].innerHTML="Make sure you don't mismatch the passwords";
+    }
+}
+function login()
+{ 
+  const conp=document.getElementById("cp");
+ const email1=document.getElementById("em");
+  
+  const pwd=document.getElementById("pa");
+  const email=document.getElementById("m");
+  var error=document.getElementsByTagName('err');
+  error[0].style.visibility="hidden";
+  error[1].style.visibility="hidden";
+  error[2].style.visibility="hidden";
+  if(email.value==="" || pwd.value==="")
+    {
+      if(email.value===""){
+       error[1].style.visibility='visible';
+      error[1].innerHTML="Field should not be empty";}
+  if(pwd.value===""){
+      error[2].style.visibility='visible';
+      error[2].innerHTML="Field should not be empty";
+    }}
+  else if(pwd.value!=conp.value || email.value!=email1.value)
+    {
+      error[0].style.visibility='visible';
+      error[0].innerHTML="Incorrect Email or Password";
+    }
+  else
+    {
+      error[3].style.visibility='visible';
+      error[3].innerHTML="Login Successfull"
+      window.location.assign("LOGIN PAGE");
+    }
+}
+</script>
+</head>
+  <body style="font-family:Courier">
+    <p id="h123">REGISTER HERE<p>
+    <form>
+      <br>First Name<br>
+      <input type="text" name="Firstname"><br><err1>Error Message</err1>
+      <br>Last Name<br>
+      <input type="text" name="Lastname"><br><err1>Error Message</err1>
+      <br>Email<br>
+      <input id="em" type="email" name="email" placeholder="mail@gmail.com" required><br><err1>Error Message</err1>
+      <br>Set Password<br>
+      <input type="password" name="password" required><br><err1>Error Message</err1>
+       <br>Confirm Password<br>
+      <input id="cp" type="password" name="cpassword" required><br><err1>Error Message</err1><br><err1>Error Message</err1><br>
+      </form>
+    <button id="s" type="button" onclick="reg()">REGISTER</button>
+  <p> LOGIN</p>
+    <err>Error Message</err>
+   <form>
+    Email<br>
+      <input id="m" type="email" name="email" placeholder="mail@gmail.com"><br>
+      <err>Error Message</err>
+      <br>Password<br>
+      <input id="pa" type="password" name="password"><br><err>Error Message</err><br><err id="p123">Error Message</err></form>
+ <button id="p" type="button" onclick="login()">LOGIN</button>
+     
+  </body>
+</html>
